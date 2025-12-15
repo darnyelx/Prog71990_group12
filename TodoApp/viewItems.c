@@ -1,48 +1,49 @@
 #include <stdio.h>
-#include "promptSearchTerm.h"
-#include "ItemsSearcher.h"
-#include "ViewFilteredItems.h"
-#include "ViewItemDetails.h"
-#include "getItemById.h"
-#include "promptItemSelection.h"
+#include "ViewItems.h"
 #include "Item.h"
+#include "ViewItemDetails.h"
 
-void viewItems(struct ItemList* items) {
-	// clear screen
-	printf("\n==================== TODO LIST ====================\n");
+void viewItems(ItemList* items) {
+    if (items == NULL || items->count == 0) {
+        printf("\nNo items to display.\n");
+        return;
+    }
 
-	// view list of items
-	printf("0. Back\n");
-	printf("-1. Search\n");
+    printf("\n=============== ITEMS ===============\n");
+    printf(" ID   | Title                | Status\n");
+    printf("-------------------------------------\n");
 
-	for (int i = 0; i < items->count; i++) {
-		printf("%d. %s\n",
-			items->items[i].id,
-			items->items[i].name);
-	}
+    for (size_t i = 0; i < items->count; i++) {
+        printf(" %-4d | %-20s | %s\n",
+            items->data[i].id,
+            items->data[i].title,
+            items->data[i].status);
+    }
 
-	int selection = -2;
-	promptItemSelection(&selection);
+    printf("=====================================\n");
 
-	switch (selection) {
+    // Prompt user to view item details
+    int id;
+    printf("\nEnter an item ID to view details (0 to go back): ");
 
-	case 0:
-		// free items (if dynamically allocated elsewhere)
-		// go back to welcome
-		welcome(items);
-		break;
+    if (scanf("%d", &id) != 1) {
+        printf("Invalid input.\n");
+        return;
+    }
 
-	case -1: {
-		char searchTerm[100];
-		promptSearchTerm(searchTerm);
-		ItemList* filteredItems = itemsSearcher(searchTerm);
-		viewFilteredItems(filteredItems, items, searchTerm);
-		break;
-	}
+    if (id == 0) {
+        return;
+    }
 
-	default:
-		// check if item exists
-		viewItemDetails(getItemById(items, selection), items);
-		break;
-	}
+    // Find selected item
+    Item* selectedItem = NULL;
+    for (size_t i = 0; i < items->count; i++) {
+        if (items->data[i].id == id) {
+            selectedItem = &items->data[i];
+            break;
+        }
+    }
+
+    // Show item details
+    viewItemDetails(selectedItem, items);
 }
