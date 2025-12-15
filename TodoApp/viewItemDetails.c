@@ -11,18 +11,24 @@
 
 void viewItemDetails(Item* item, ItemList* items) {
 	// display item details
+	clearScreen();
 
 	if (item == NULL) {
 		printf("Item not found.\n");
-		viewItems(items);
+		viewItems(items, 0);
 		return;
 	}
 
-	printf("\n============= ITEM DETAILS =============\n");
-	printf("ID: %d\n", item->id);
-	printf("Name: %s\n", item->title);
-	printf("Status: %s\n", item->status);
-	printf("========================================\n");
+	printf("\n");
+	printf("+------------------------------------------+\n");
+	printf("|              ITEM DETAILS                |\n");
+	printf("+------------------------------------------+\n");
+	printf("| ID      : %-30d |\n", item->id);
+	printf("| Name    : %-30s |\n", item->title);
+	printf("| Details : %-30s |\n", item->details);
+	printf("| Status  : %-30s |\n", item->status);
+	printf("+------------------------------------------+\n");
+
 
 	int selection = 0;
 	promptSingleItemAction(&selection);
@@ -45,7 +51,7 @@ void viewItemDetails(Item* item, ItemList* items) {
 			deleteItemById(items, item->id);
 			saveToDisk(items);
 			printf("Item deleted successfully.\n");
-			viewItems(items);
+			viewItems(items, 0);
 		}
 		else {
 			viewItemDetails(item, items);
@@ -55,11 +61,17 @@ void viewItemDetails(Item* item, ItemList* items) {
 
 	case 3:
 		// change status
-		promptChangeItemStatus(*item);
+		promptChangeItemStatus(item);
 		saveToDisk(items);
 		printf("Item status updated.\n");
 		viewItemDetails(item, items);
 		break;
+
+	case 0:
+		// back to all items
+		viewItems(items, 0);
+		break;
+
 
 	default:
 		// refresh item details

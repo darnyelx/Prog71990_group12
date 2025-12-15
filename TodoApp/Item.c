@@ -201,3 +201,12 @@ int validateItem(const Item* item) {
     
     return 1;
 }
+
+void clearScreen(void)
+{
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}

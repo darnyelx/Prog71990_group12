@@ -93,6 +93,9 @@
     <ClCompile Include="welcome.c">
       <Filter>Source Files\Helpers</Filter>
     </ClCompile>
+    <ClCompile Include="viewSearcher.c">
+      <Filter>Source Files\Viewers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="loadFromDisk.h">
@@ -160,6 +163,9 @@
     </ClInclude>
     <ClInclude Include="welcome.h">
       <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewSearcher.h">
+      <Filter>Header Files\Viewers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

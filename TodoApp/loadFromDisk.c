@@ -65,10 +65,13 @@ char** parseCsvLine(const char* line)
 
 ItemList* loadFromDisk(void)
 {
-    FILE* filePtr = fopen("./todo_list.csv", "w+");
+    FILE* filePtr = fopen("./todo_list.csv", "r");
     if (!filePtr) {
-        printf("Error opening file\n");
-        return NULL;
+        filePtr = fopen_s(filePtr,"./todo_list.csv", "w+"); // create file
+        if (!filePtr) {
+            printf("Error creating file\n");
+            return NULL;
+        }
     }
 
 	printf("Loading items from disk...\n");
@@ -116,10 +119,11 @@ ItemList* loadFromDisk(void)
 
         t->id = atoi(parsedLine[0]);
 
+
         strncpy_s(t->title, sizeof(t->title), parsedLine[1], _TRUNCATE);
         strncpy_s(t->details, sizeof(t->details), parsedLine[2], _TRUNCATE);
         strncpy_s(t->created, sizeof(t->created), parsedLine[3], _TRUNCATE);
-        strncpy_s(t->status, sizeof(t->status), parsedLine[5], _TRUNCATE);
+        strncpy_s(t->status, sizeof(t->status), parsedLine[4], _TRUNCATE);
 
 
         t->title[sizeof(t->title) - 1] = '\0';

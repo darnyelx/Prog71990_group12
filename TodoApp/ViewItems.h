@@ -1,3 +1,3 @@
 #pragma once
 #include "Item.h"
-void viewItems(struct ItemList* items);
+void viewItems(struct ItemList* items, int error);

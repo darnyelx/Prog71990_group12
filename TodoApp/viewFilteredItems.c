@@ -8,8 +8,10 @@
 #include "getItemById.h"
 #include "ViewItems.h"
 #include "promptSelectAFilteredItem.h"
+#include "promptSearchTerm.h"
 
 void viewFilteredItems(ItemList* filteredItems, ItemList* allItems, const char* searchTerm) {
+    clearScreen();
     int i;
     int selection = -2;
 
@@ -31,35 +33,40 @@ void viewFilteredItems(ItemList* filteredItems, ItemList* allItems, const char* 
     }
 
     /* display filtered items */
-    printf("\nFiltered Items for \"%s\"\n", searchTerm);
-    printf("0. Back\n");
+    printf("\n==============================================\n");
+    printf("          FILTERED TODOs FOR \"%s\"\n", searchTerm);
+    printf("==============================================\n");
+    printf("\n");
 
-    if (filteredItems->count == 0) {
-        printf("No matching items found.\n");
-    }
-    else {
-        for (i = 0; i < filteredItems->count; i++) {
-            Item* item = &filteredItems->data[i];
-            printf("\n---------------------------------\n");
-            printf("ID: %d\n", item->id);
-            printf("Title: %s\n", item->title);
-            printf("Content: %s\n", item->details);
-            printf("Status: %s\n", item->status);
-            printf("Created at: %s\n", item->created); 
-            printf("---------------------------------\n");
-        }
+    printf("+----+----------------------+----------------------+------------+------------+\n");
+    printf("| ID | Title                | Content              | Status     | Created    |\n");
+    printf("+----+----------------------+----------------------+------------+------------+\n");
+
+    for (i = 0; i < filteredItems->count; i++) {
+        Item* item = &filteredItems->data[i];
+
+        printf("| %-2d | %-20s | %-20s | %-10s | %-10s |\n",
+            item->id,
+            item->title,
+            item->details,
+            item->status,
+            item->created);
     }
 
-    promptSelectAFilteredItem(&selection);
+    printf("+----+----------------------+----------------------+------------+------------+\n");
+
+
+        promptSelectAFilteredItem(&selection);
+    
+
 
     switch (selection) {
 
     case 0:
-        /* clear filteredItems */
-        filteredItems->count = 0;
+		//free filteredItems;
 
         /* go back to all items view */
-        viewItems(allItems);
+        viewItems(allItems, 0);
         break;
 
     default: {
@@ -67,6 +74,7 @@ void viewFilteredItems(ItemList* filteredItems, ItemList* allItems, const char* 
 
         if (item != NULL) {
             viewItemDetails(item, allItems);
+
         }
         else {
             printf("Invalid selection.\n");

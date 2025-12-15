@@ -40,5 +40,6 @@ int deleteItem(ItemList* list, int id);
 // Utility functions
 void getCurrentDateString(char* buffer, size_t size);
 int validateItem(const Item* item);
+void clearScreen(void);
 
 #endif

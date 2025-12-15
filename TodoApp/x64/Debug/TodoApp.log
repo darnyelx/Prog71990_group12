@@ -1,7 +1,2 @@
-﻿  viewItems.c
-C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\viewItems.c(23,5): warning C4013: 'welcome' undefined; assuming extern returning int
-C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\viewItems.c(30,37): warning C4133: 'function': incompatible types - from 'ItemList *' to 'ItemList *'
-C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\viewItems.c(36,32): warning C4133: 'function': incompatible types - from 'ItemList *' to 'ItemList *'
-C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\viewItems.c(36,51): warning C4133: 'function': incompatible types - from 'ItemList *' to 'ItemList *'
-C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\viewItems.c(29,14): warning C4133: 'initializing': incompatible types - from 'Item *' to 'ItemList *'
+﻿  promptEditItem.c
   TodoApp.vcxproj -> C:\Users\Darnyelx\source\repos\TodoApp\x64\Debug\TodoApp.exe

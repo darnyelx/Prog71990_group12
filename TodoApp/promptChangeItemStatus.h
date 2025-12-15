@@ -1,4 +1,4 @@
 #pragma once
 #include "Item.h"
 
-void promptChangeItemStatus(Item item);
+void promptChangeItemStatus(Item* item);

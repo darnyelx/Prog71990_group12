@@ -14,24 +14,15 @@ static void writeCsvField(FILE* fp, const char* s)
 {
     if (!s) s = "";
 
-    int needsQuotes = 0;
-    for (const char* p = s; *p; p++) {
-        if (*p == ',' || *p == '"' || *p == '\n' || *p == '\r') {
-            needsQuotes = 1;
-            break;
-        }
-    }
-
-    if (!needsQuotes) {
-        fputs(s, fp);
-        return;
-    }
-
     fputc('"', fp);
+
     for (const char* p = s; *p; p++) {
-        if (*p == '"') fputc('"', fp);  // escape quote
+        if (*p == '"') {
+            continue;   // ignore quotes in the string
+        }
         fputc(*p, fp);
     }
+
     fputc('"', fp);
 }
 
@@ -46,7 +37,7 @@ void saveToDisk(ItemList* items)
     }
 
     // Header row (match your readCSV columns)
-    fprintf(fp, "id,title,items,created,updated,status\n");
+    fprintf(fp, "id,title,items,created,status\n");
 
     for (size_t i = 0; i < items->count; i++)
     {
@@ -54,9 +45,12 @@ void saveToDisk(ItemList* items)
 
         fprintf(fp, "%d,", it->id);
 
-        writeCsvField(fp, it->title);   fputc(',', fp);
-        writeCsvField(fp, it->details);   fputc(',', fp);
-        writeCsvField(fp, it->created); fputc(',', fp);
+        writeCsvField(fp, it->title);  
+        fputc(',', fp);
+        writeCsvField(fp, it->details);  
+        fputc(',', fp);
+        writeCsvField(fp, it->created); 
+        fputc(',', fp);
         writeCsvField(fp, it->status);
 
         fputc('\n', fp);

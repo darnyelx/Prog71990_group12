@@ -142,6 +142,7 @@
     <ClCompile Include="viewFilteredItems.c" />
     <ClCompile Include="viewItemDetails.c" />
     <ClCompile Include="viewItems.c" />
+    <ClCompile Include="viewSearcher.c" />
     <ClCompile Include="welcome.c" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +152,7 @@
     <ClInclude Include="ItemsSearcher.h" />
     <ClInclude Include="promptWelcome.h" />
     <ClInclude Include="viewErrorMessage.h" />
+    <ClInclude Include="ViewSearcher.h" />
     <ClInclude Include="ViewSuccessMessage.h" />
     <ClInclude Include="promptConfirmSave.h" />
     <ClInclude Include="promptCreateItem.h" />

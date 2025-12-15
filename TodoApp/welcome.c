@@ -13,7 +13,9 @@ void welcome(ItemList* items) {
 	switch (selection) {
 	case 1:
 	{
-		viewItems(items);
+		viewItems(items, 0);
+	
+	break;
 	}
 	case 2:
 		promptCreateItem(items);

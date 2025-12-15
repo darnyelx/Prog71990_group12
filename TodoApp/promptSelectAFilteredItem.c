@@ -6,8 +6,8 @@ void promptSelectAFilteredItem(int* selection)
 	while (1)
 	{
 		printf("\n---------------------------------\n");
-		printf("Select an item by its ID to view details.\n");
-		printf("Enter 0 to return to all Task.\n");
+		printf("Select a Todo by its ID to view details.\n");
+		printf("Enter 0 to return to all TODOs.\n");
 		printf("---------------------------------\n");
 		printf("Your choice: ");
 

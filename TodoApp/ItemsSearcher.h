@@ -1,4 +1,4 @@
 #pragma once
 #include "Item.h"
 
-Item*  itemsSearcher(char* term);
+ItemList* itemsSearcher(ItemList* items, char* term);

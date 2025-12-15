@@ -1,2 +1,3 @@
 #pragma once
-void promptEditItem(struct Item* item);
+#include "Item.h"
+void promptEditItem(Item* item);
