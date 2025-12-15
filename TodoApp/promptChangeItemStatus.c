@@ -29,12 +29,12 @@ void promptChangeItemStatus(Item* item) {
         
         // Validate status
         if (strlen(newStatus) == 0) {
-            strcpy(newStatus, "Pending");
+            strcpy_s(newStatus, MAX_STATUS_LENGTH, "Pending");
         }
     } else {
-        strcpy(newStatus, "Pending");
+        strcpy_s(newStatus, MAX_STATUS_LENGTH, "Pending");
     }
     
-    strcpy(item->status, newStatus);
+    strcpy_s(item->status, MAX_STATUS_LENGTH, newStatus);
     printf("Status updated successfully.\n");
 }

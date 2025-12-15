@@ -48,10 +48,10 @@ void promptCreateItem(ItemList* items) {
         
         // Validate status
         if (strlen(status) == 0) {
-            strcpy(status, "Pending");
+            strcpy_s(status, MAX_STATUS_LENGTH, "Pending");
         }
     } else {
-        strcpy(status, "Pending");
+        strcpy_s(status, MAX_STATUS_LENGTH, "Pending");
     }
     
     // Generate new ID (simple approach - use current count + 1)
