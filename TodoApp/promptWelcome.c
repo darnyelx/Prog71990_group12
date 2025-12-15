@@ -25,7 +25,7 @@ void promptWelcome(int* selection)
 
         /* Read user input */
 
-        if (scanf("%d", &input) != 1)
+        if (scanf_s("%d", &input) != 1)
         {
             /* Clear invalid input */
             while (getchar() != '\n');

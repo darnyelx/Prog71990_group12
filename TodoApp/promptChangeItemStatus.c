@@ -4,6 +4,8 @@
 #include "Item.h"
 #include "saveToDisk.h"
 
+#define MAX_STATUS_LENGTH 20
+
 void promptChangeItemStatus(Item* item) {
     if (item == NULL) {
         printf("Error: Invalid item.\n");
