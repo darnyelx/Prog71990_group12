@@ -1,2 +1,4 @@
 #pragma once
-void saveToDisk(struct Item* item);
+#include "Item.h"
+
+void saveToDisk(ItemList* items);

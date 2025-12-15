@@ -4,6 +4,8 @@
 #include <string.h>
 #include "Item.h"
 #include "saveToDisk.h"
+#include "welcome.h"
+
 
 void promptCreateItem(ItemList* items) {
     if (items == NULL) {
@@ -76,4 +78,7 @@ void promptCreateItem(ItemList* items) {
     saveToDisk(items);
     
     printf("\nItem created successfully with ID: %d\n", newId);
+	//call welcome again
+	//clear input buffer
+    welcome(items);
 }

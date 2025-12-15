@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="deleteItem.c" />
     <ClCompile Include="getItemById.c" />
+    <ClCompile Include="Item.c" />
     <ClCompile Include="itemsSearcher.c" />
     <ClCompile Include="loadFromDisk.c" />
     <ClCompile Include="main.c" />
@@ -141,6 +142,7 @@
     <ClCompile Include="viewFilteredItems.c" />
     <ClCompile Include="viewItemDetails.c" />
     <ClCompile Include="viewItems.c" />
+    <ClCompile Include="welcome.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="deleteItem.h" />
@@ -164,6 +166,7 @@
     <ClInclude Include="promptSearchTerm.h" />
     <ClInclude Include="promptSelectAFilteredItem.h" />
     <ClInclude Include="saveToDisk.h" />
+    <ClInclude Include="welcome.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

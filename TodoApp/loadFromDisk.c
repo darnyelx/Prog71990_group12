@@ -65,11 +65,13 @@ char** parseCsvLine(const char* line)
 
 ItemList* loadFromDisk(void)
 {
-    FILE* filePtr = fopen("./Item_list.csv", "r");
+    FILE* filePtr = fopen("./todo_list.csv", "w+");
     if (!filePtr) {
         printf("Error opening file\n");
         return NULL;
     }
+
+	printf("Loading items from disk...\n");
 
     ItemList* list = malloc(sizeof(ItemList));
     if (!list) {

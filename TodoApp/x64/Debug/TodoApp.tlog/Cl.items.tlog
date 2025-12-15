@@ -1,5 +1,6 @@
 C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\deleteItem.c;C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\x64\Debug\deleteItem.obj
 C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\getItemById.c;C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\x64\Debug\getItemById.obj
+C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\Item.c;C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\x64\Debug\Item.obj
 C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\itemsSearcher.c;C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\x64\Debug\itemsSearcher.obj
 C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\loadFromDisk.c;C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\x64\Debug\loadFromDisk.obj
 C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\main.c;C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\x64\Debug\main.obj
@@ -16,3 +17,4 @@ C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\saveToDisk.c;C:\Users\Darnyelx\so
 C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\viewFilteredItems.c;C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\x64\Debug\viewFilteredItems.obj
 C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\viewItemDetails.c;C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\x64\Debug\viewItemDetails.obj
 C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\viewItems.c;C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\x64\Debug\viewItems.obj
+C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\welcome.c;C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\x64\Debug\welcome.obj
