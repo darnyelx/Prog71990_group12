@@ -1,7 +1,2 @@
-﻿  viewFilteredItems.c
-  viewItems.c
-C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\viewItems.c(30,37): warning C4133: 'function': incompatible types - from 'ItemList *' to 'ItemList *'
-C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\viewItems.c(35,32): warning C4133: 'function': incompatible types - from 'ItemList *' to 'ItemList *'
-C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\viewItems.c(29,14): warning C4133: 'initializing': incompatible types - from 'Item *' to 'ItemList *'
-  Generating Code...
+﻿  loadFromDisk.c
   TodoApp.vcxproj -> C:\Users\Darnyelx\source\repos\TodoApp\x64\Debug\TodoApp.exe

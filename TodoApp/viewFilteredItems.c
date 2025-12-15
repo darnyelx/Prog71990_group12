@@ -30,7 +30,7 @@ void viewFilteredItems( ItemList* filteredItems,  ItemList* allItems, const char
 		  break;
 
 	default:
-		viewItemDetails(getItemById(allItems, selection));
+		viewItemDetails(getItemById(allItems, selection), allItems);
 		break;
 	}
 }

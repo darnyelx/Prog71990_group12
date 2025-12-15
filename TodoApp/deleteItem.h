@@ -1,4 +1,4 @@
 #pragma once
 
 #include "Item.h"
-void deleteItemById(struct Item** items, int id);
+void deleteItemById( ItemList* items, int id);
