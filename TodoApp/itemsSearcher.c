@@ -5,48 +5,78 @@
 
 #define INITIAL_CAPACITY 5
 
+/*
+ * Searches for items whose title or details contain the given search term.
+ *
+ * Parameters:
+ *   items - pointer to the ItemList to search
+ *   term  - search keyword
+ *
+ * Returns:
+ *   A newly allocated ItemList containing matching items,
+ *   or NULL if no items match or an error occurs.
+ *
+ * Notes:
+ *   - The returned ItemList is dynamically allocated.
+ *   - The caller is responsible for freeing the returned list.
+ *   - Matching is case-sensitive.
+ *
+ * Author: ""
+ */
 ItemList* itemsSearcher(ItemList* items, char* term)
 {
-    if (!items || !term) {
+    // Validate input parameters
+    if (items == NULL || term == NULL) {
         return NULL;
     }
 
+    // Allocate memory for the result list
     ItemList* result = malloc(sizeof(ItemList));
-    if (!result) return NULL;
+    if (result == NULL) {
+        return NULL;
+    }
 
+    // Initialize the result list
     result->count = 0;
     result->capacity = INITIAL_CAPACITY;
     result->data = malloc(sizeof(Item) * result->capacity);
 
-    if (!result->data) {
+    if (result->data == NULL) {
         free(result);
         return NULL;
     }
 
-    for (size_t i = 0; i < items->count; i++)
-    {
+    // Iterate through all items in the original list
+    for (size_t i = 0; i < items->count; i++) {
         Item* current = &items->data[i];
 
-        // search in title OR details
-        if (strstr(current->title, term) || strstr(current->details, term))
+        // Check if the search term appears in the title or details
+        if (strstr(current->title, term) != NULL ||
+            strstr(current->details, term) != NULL)
         {
-            // grow result list if needed
+            // Resize the result list if capacity is reached
             if (result->count == result->capacity) {
                 result->capacity *= 2;
-                Item* temp = realloc(result->data,
-                    sizeof(Item) * result->capacity);
-                if (!temp) {
+
+                Item* resizedData = realloc(
+                    result->data,
+                    sizeof(Item) * result->capacity
+                );
+
+                if (resizedData == NULL) {
                     free(result->data);
                     free(result);
                     return NULL;
                 }
-                result->data = temp;
+
+                result->data = resizedData;
             }
 
-            // copy item into result list
+            // Copy the matching item into the result list
             result->data[result->count++] = *current;
         }
     }
 
+    // Return the list of matching items
     return result;
 }

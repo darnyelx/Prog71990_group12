@@ -1,15 +1,18 @@
 #include <stdio.h>
-#include "Item.h"
-
 #include <stdlib.h>
 #include <string.h>
+#include "Item.h"
 
 #define INITIAL_CAPACITY 10
 #define CSV_COLS 6
-
-#define CSV_COLS 6
 #define FIELD_MAX 500
 
+/*
+ * Splits one CSV line into CSV_COLS fields.
+ * Supports commas inside quotes. Quotes are ignored (not stored).
+ * Returns an allocated array of strings; caller must free each field and the array.
+ * Author: "Ifeanyi Chiemeke"
+ */
 char** parseCsvLine(const char* line)
 {
     int charIndex = 0;
@@ -23,7 +26,6 @@ char** parseCsvLine(const char* line)
     for (int i = 0; i < CSV_COLS; i++) {
         arrayOfWords[i] = malloc(FIELD_MAX);
         if (!arrayOfWords[i]) {
-            // cleanup if partial alloc failed
             for (int j = 0; j < i; j++) free(arrayOfWords[j]);
             free(arrayOfWords);
             return NULL;
@@ -43,7 +45,9 @@ char** parseCsvLine(const char* line)
             col++;
             pos = 0;
 
-            if (col >= CSV_COLS) break; // too many columns
+            if (col >= CSV_COLS) {
+                break;  // too many columns in input line
+            }
         }
         else {
             if (pos < FIELD_MAX - 1) {
@@ -54,27 +58,39 @@ char** parseCsvLine(const char* line)
         charIndex++;
     }
 
-    if (col < CSV_COLS)
+    if (col < CSV_COLS) {
         arrayOfWords[col][pos] = '\0';
+    }
 
     return arrayOfWords;
 }
 
-
-
-
+/*
+ * Loads items from ./todo_list.csv into a dynamically allocated ItemList.
+ * If the file does not exist, it is created and initialized with a header row.
+ *  Author: "Ifeanyi Chiemeke"
+ */
 ItemList* loadFromDisk(void)
 {
-    FILE* filePtr = fopen("./todo_list.csv", "r");
+    FILE* filePtr = NULL;
+
+    // Try open for reading
+    fopen_s(&filePtr, "./todo_list.csv", "r");
+
+    // If it doesn't exist, create it and write header
     if (!filePtr) {
-        filePtr = fopen_s(filePtr,"./todo_list.csv", "w+"); // create file
+        fopen_s(&filePtr, "./todo_list.csv", "w+");
         if (!filePtr) {
             printf("Error creating file\n");
             return NULL;
         }
+
+        fprintf(filePtr, "id,title,details,created,status,updated\n");
+        fflush(filePtr);
+        rewind(filePtr);
     }
 
-	printf("Loading items from disk...\n");
+    printf("Loading items from disk...\n");
 
     ItemList* list = malloc(sizeof(ItemList));
     if (!list) {
@@ -94,19 +110,25 @@ ItemList* loadFromDisk(void)
 
     char line[1000];
 
-    // Skip header
-    fgets(line, sizeof(line), filePtr);
+    // Skip header if present
+    if (!fgets(line, sizeof(line), filePtr)) {
+        fclose(filePtr);
+        return list; // empty file, return empty list
+    }
 
     while (fgets(line, sizeof(line), filePtr))
     {
         char** parsedLine = parseCsvLine(line);
         if (!parsedLine) continue;
 
-        // grow array if needed
+        // grow array if it's needed
         if (list->count == list->capacity) {
             list->capacity *= 2;
             Item* temp = realloc(list->data, sizeof(Item) * list->capacity);
             if (!temp) {
+                for (int i = 0; i < CSV_COLS; i++) free(parsedLine[i]);
+                free(parsedLine);
+
                 fclose(filePtr);
                 free(list->data);
                 free(list);
@@ -117,19 +139,13 @@ ItemList* loadFromDisk(void)
 
         Item* t = &list->data[list->count];
 
+        // Map CSV columns -> struct fields
         t->id = atoi(parsedLine[0]);
-
 
         strncpy_s(t->title, sizeof(t->title), parsedLine[1], _TRUNCATE);
         strncpy_s(t->details, sizeof(t->details), parsedLine[2], _TRUNCATE);
         strncpy_s(t->created, sizeof(t->created), parsedLine[3], _TRUNCATE);
         strncpy_s(t->status, sizeof(t->status), parsedLine[4], _TRUNCATE);
-
-
-        t->title[sizeof(t->title) - 1] = '\0';
-        t->details[sizeof(t->details) - 1] = '\0';
-        t->created[sizeof(t->created) - 1] = '\0';
-        t->status[sizeof(t->status) - 1] = '\0';
 
         list->count++;
 
