@@ -1,5 +1,5 @@
 #include <stdio.h>
 #include "Item.h"
-void promptEditItem(struct Item* item) {
+void promptEditItem( Item* item) {
 	
 }

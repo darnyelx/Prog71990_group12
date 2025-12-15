@@ -20,7 +20,7 @@ void viewItems(struct ItemList* items) {
 		case 0: {
 			//free items
 			//go back to welcome
-			void welcome();
+			void welcome(items);
 		}
 			  break;
 		case -1: {
@@ -32,7 +32,8 @@ void viewItems(struct ItemList* items) {
 
 			  break;
 		default:
-			viewItemDetails(getItemById(items, selection));
+			//check if item exists
+			viewItemDetails(getItemById(items, selection), items);
 			break;
 	}
 

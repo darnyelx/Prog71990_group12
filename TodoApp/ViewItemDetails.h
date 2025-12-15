@@ -1,2 +1,3 @@
 #pragma once
-void viewItemDetails(struct Item* item);
+#include "Item.h"
+void viewItemDetails( Item* item, ItemList* items);

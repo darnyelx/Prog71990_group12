@@ -10,7 +10,7 @@
 #include "ViewItems.h"
 
 void viewItemDetails(Item* item, ItemList* items) {
-	//implement view item details
+	//display  item details
 
 	int selection = 0;
 	promptSingleItemAction(&selection);
@@ -19,7 +19,7 @@ void viewItemDetails(Item* item, ItemList* items) {
 		case 1:
 			promptEditItem(item);
 			saveToDisk(items);
-			//prompt success message
+			//display success message
 			viewItemDetails(item, items);
 			break;
 		case 2: {
@@ -47,8 +47,8 @@ void viewItemDetails(Item* item, ItemList* items) {
 			break;
 
 		default: {
-			//go back to view items
-			viewItems(items);
+			//refresh items view
+			viewItemDetails(item, items);
 		}
 			  break;
 		

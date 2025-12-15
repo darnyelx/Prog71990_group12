@@ -6,31 +6,32 @@
 #include "Item.h";
 #include "promptCreateItem.h"
 
-void welcome() {
+void welcome(ItemList* items) {
 	int selection = 0;
 	promptWelcome(&selection);
-	ItemList* items = loadFromDisk();
 
 	switch (selection) {
-	case 1:
-	{
-		viewItems(items);
-	}
-	case 2:
-		 promptCreateItem(items);
-		break;
-	case 0:
-		exit(1);
-		break;
+		case 1:
+		{
+			viewItems(items);
+		}
+		case 2:
+			 promptCreateItem(items);
+			break;
+		case 0:
+			exit(1);
+			break;
 
-	default:
-		printf("Invalid selection. Please try again.\n");
-		welcome();
-		break;
+		default:
+			printf("Invalid selection. Please try again.\n");
+			welcome(items);
+			break;
 
-	}
+		}
 }
 
 int main() {
-	welcome();
+	ItemList* items = loadFromDisk();
+
+	welcome(items);
 }
