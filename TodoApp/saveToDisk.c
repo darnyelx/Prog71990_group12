@@ -2,7 +2,7 @@
 
 #include "Item.h"
 #include "saveToDisk.h"
-void saveToDisk(Item** items) {
+void saveToDisk(ItemList* items) {
 	//write items to disk overwriting existing file
 	
 }

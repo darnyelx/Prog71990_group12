@@ -7,7 +7,7 @@
 #include "promptItemSelection.h"
 #include "Item.h"
 
-void viewItems(struct Item** items) {
+void viewItems(struct ItemList* items) {
 	//clear screen
 	//view list of items
 	int selection = -2;
@@ -26,8 +26,8 @@ void viewItems(struct Item** items) {
 		case -1: {
 			char searchTerm[100];
 			promptSearchTerm(searchTerm);
-			struct Item** items = itemsSearcher(searchTerm);
-			viewFilteredItems(items, searchTerm);
+			ItemList* filteredItems = itemsSearcher(searchTerm);
+			viewFilteredItems(filteredItems, items, searchTerm);
 		}
 
 			  break;

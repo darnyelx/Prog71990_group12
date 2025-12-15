@@ -11,7 +11,7 @@
 
 
 
-void viewFilteredItems(struct Item** filteredItems, struct Item** allItems, const char* searchTerm ) {
+void viewFilteredItems( ItemList* filteredItems,  ItemList* allItems, const char* searchTerm ) {
 	//show filtered items based on search term
 
 

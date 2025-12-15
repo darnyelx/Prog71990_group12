@@ -9,7 +9,7 @@
 void welcome() {
 	int selection = 0;
 	promptWelcome(&selection);
-	Item** items = loadFromDisk();
+	ItemList* items = loadFromDisk();
 
 	switch (selection) {
 	case 1:

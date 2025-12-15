@@ -1,2 +1,4 @@
 #pragma once
-void promptCreateItem(struct Item** items);
+#include "Item.h"
+
+void promptCreateItem(struct ItemList* items);

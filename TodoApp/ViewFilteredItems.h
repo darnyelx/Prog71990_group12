@@ -1,2 +1,4 @@
 #pragma once
-void viewFilteredItems(struct Item** items, const char* searchTerm);
+#include "Item.h"
+
+void viewFilteredItems(ItemList* filteredItems, ItemList* allItems, const char* searchTerm);

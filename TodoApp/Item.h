@@ -10,4 +10,10 @@ typedef struct Item {
     char status[20];
 } Item;
 
+typedef struct {
+    Item* data;
+    size_t count;
+    size_t capacity;
+} ItemList;
+
 #endif

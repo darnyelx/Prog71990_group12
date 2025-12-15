@@ -9,7 +9,7 @@
 #include "promptChangeItemStatus.h"
 #include "ViewItems.h"
 
-void viewItemDetails(Item* item, Item** items) {
+void viewItemDetails(Item* item, ItemList* items) {
 	//implement view item details
 
 	int selection = 0;

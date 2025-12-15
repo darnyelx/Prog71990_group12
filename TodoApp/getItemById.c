@@ -1,5 +1,5 @@
 #include <stdio.h>
 #include "Item.h"
-Item* getItemById(struct Item** items, int id){
+Item* getItemById(ItemList* items, int id){
 
 }
