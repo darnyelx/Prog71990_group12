@@ -49,7 +49,6 @@ char** parseCsvLine(const char* line)
             if (pos < FIELD_MAX - 1) {
                 arrayOfWords[col][pos++] = c;
             }
-            // else: silently truncate
         }
 
         charIndex++;
