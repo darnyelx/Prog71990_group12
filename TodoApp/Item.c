@@ -1,3 +1,6 @@
+
+#define _CRT_SECURE_NO_WARNINGS 1
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -96,25 +99,26 @@ Item createItem(int id, const char* title, const char* details, const char* stat
     Item item;
     item.id = id;
     
+
     if (title != NULL) {
-        strncpy_s(item.title, title, MAX_TITLE_LENGTH - 1);
-        item.title[MAX_TITLE_LENGTH - 1] = '\0';
+        strncpy_s(item.title, sizeof(item.title), title, sizeof(item.title) - 1);
+        item.title[sizeof(item.title) - 1] = '\0';
     } else {
         item.title[0] = '\0';
     }
     
     if (details != NULL) {
-        strncpy_s(item.details, details, MAX_DETAILS_LENGTH - 1);
-        item.details[MAX_DETAILS_LENGTH - 1] = '\0';
+        strncpy_s(item.details, sizeof(item.details), details, sizeof(item.details) - 1);
+        item.details[sizeof(item.details) - 1] = '\0';
     } else {
         item.details[0] = '\0';
     }
     
     if (status != NULL) {
-        strncpy_s(item.status, status, MAX_STATUS_LENGTH - 1);
-        item.status[MAX_STATUS_LENGTH - 1] = '\0';
+        strncpy_s(item.status, sizeof(item.status), status, sizeof(item.status) - 1);
+        item.status[sizeof(item.status) - 1] = '\0';
     } else {
-        strcpy_s(item.status, "Pending");
+        strcpy_s(item.status, sizeof(item.status), "Pending");
     }
     
     getCurrentDateString(item.created, MAX_DATE_LENGTH);
@@ -170,10 +174,11 @@ void getCurrentDateString(char* buffer, size_t size) {
     time_t now = time(NULL);
     struct tm* tm_info = localtime(&now);
     
+
     if (tm_info != NULL) {
         strftime(buffer, size, "%Y-%m-%d %H:%M:%S", tm_info);
     } else {
-        strcpy_s(buffer, "Unknown");
+        strcpy_s(buffer, size, "Unknown");
     }
 }
 
