@@ -13,5 +13,144 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Helpers">
+      <UniqueIdentifier>{bd4512bd-ed31-4991-b804-7fda9d6b0bb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Viewers">
+      <UniqueIdentifier>{7f40cee4-32cb-4c6d-a9e5-3688a74858f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Helpers">
+      <UniqueIdentifier>{f8df5878-fb2c-4cdb-91e4-8fbbf9beab94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Viewers">
+      <UniqueIdentifier>{bf76929f-06b2-44ff-944c-1210f108f854}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Prompts">
+      <UniqueIdentifier>{492179a7-fbfd-4e67-b174-ac5bbc39ecd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Prompts">
+      <UniqueIdentifier>{acf119ba-d3da-45cf-8125-b70af292d144}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="loadFromDisk.c">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="saveToDisk.c">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="promptWelcome.c">
+      <Filter>Source Files\Prompts</Filter>
+    </ClCompile>
+    <ClCompile Include="viewItems.c">
+      <Filter>Source Files\Viewers</Filter>
+    </ClCompile>
+    <ClCompile Include="viewItemDetails.c">
+      <Filter>Source Files\Viewers</Filter>
+    </ClCompile>
+    <ClCompile Include="promptSingleItemAction.c">
+      <Filter>Source Files\Prompts</Filter>
+    </ClCompile>
+    <ClCompile Include="promptEditItem.c">
+      <Filter>Source Files\Prompts</Filter>
+    </ClCompile>
+    <ClCompile Include="promptChangeItemStatus.c">
+      <Filter>Source Files\Prompts</Filter>
+    </ClCompile>
+    <ClCompile Include="promptCreateItem.c">
+      <Filter>Source Files\Prompts</Filter>
+    </ClCompile>
+    <ClCompile Include="promptItemSelection.c">
+      <Filter>Source Files\Prompts</Filter>
+    </ClCompile>
+    <ClCompile Include="promptSearchTerm.c">
+      <Filter>Source Files\Prompts</Filter>
+    </ClCompile>
+    <ClCompile Include="viewFilteredItems.c">
+      <Filter>Source Files\Viewers</Filter>
+    </ClCompile>
+    <ClCompile Include="promptSelectAFilteredItem.c">
+      <Filter>Source Files\Prompts</Filter>
+    </ClCompile>
+    <ClCompile Include="promptDeleteItem.c">
+      <Filter>Source Files\Prompts</Filter>
+    </ClCompile>
+    <ClCompile Include="getItemById.c">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="deleteItem.c">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="itemsSearcher.c">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="loadFromDisk.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="saveToDisk.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewItems.h">
+      <Filter>Header Files\Viewers</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewItemDetails.h">
+      <Filter>Header Files\Viewers</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewFilteredItems.h">
+      <Filter>Header Files\Viewers</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewSuccessMessage.h">
+      <Filter>Header Files\Viewers</Filter>
+    </ClInclude>
+    <ClInclude Include="promptConfirmSave.h">
+      <Filter>Header Files\Prompts</Filter>
+    </ClInclude>
+    <ClInclude Include="promptCreateItem.h">
+      <Filter>Header Files\Prompts</Filter>
+    </ClInclude>
+    <ClInclude Include="promptDeleteItem.h">
+      <Filter>Header Files\Prompts</Filter>
+    </ClInclude>
+    <ClInclude Include="promptEditItem.h">
+      <Filter>Header Files\Prompts</Filter>
+    </ClInclude>
+    <ClInclude Include="promptSingleItemAction.h">
+      <Filter>Header Files\Prompts</Filter>
+    </ClInclude>
+    <ClInclude Include="promptChangeItemStatus.h">
+      <Filter>Header Files\Prompts</Filter>
+    </ClInclude>
+    <ClInclude Include="promptItemSelection.h">
+      <Filter>Header Files\Prompts</Filter>
+    </ClInclude>
+    <ClInclude Include="promptSearchTerm.h">
+      <Filter>Header Files\Prompts</Filter>
+    </ClInclude>
+    <ClInclude Include="promptSelectAFilteredItem.h">
+      <Filter>Header Files\Prompts</Filter>
+    </ClInclude>
+    <ClInclude Include="promptWelcome.h">
+      <Filter>Header Files\Prompts</Filter>
+    </ClInclude>
+    <ClInclude Include="getItemById.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="viewErrorMessage.h">
+      <Filter>Header Files\Viewers</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemsSearcher.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="deleteItem.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
