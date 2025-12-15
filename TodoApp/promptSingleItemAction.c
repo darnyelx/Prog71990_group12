@@ -15,7 +15,8 @@ void promptSingleItemAction(int* selection)
 		printf("---------------------------------\n");
 		printf("Enter your choice: ");
 		/* Read user input */
-		if (scanf_s("%d", &input) != 1)
+
+		if (scanf("%d", &input) != 1)
 		{
 			/* Clear invalid input */
 			while (getchar() != '\n');

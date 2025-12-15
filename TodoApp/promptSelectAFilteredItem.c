@@ -10,16 +10,19 @@ void promptSelectAFilteredItem(int* selection)
 		printf("Enter 0 to return to all Task.\n");
 		printf("---------------------------------\n");
 		printf("Your choice: ");
+
+
+
 		/* Read user input */
-		if (scanf_s("%d", &input) != 1)
+		if (scanf("%d", &input) != 1)
 		{
 			/* Clear invalid input */
 			while (getchar() != '\n');
 			printf("Invalid input. Please enter a number.\n");
 			continue;
 		}
-		/* Validate input */
-		if (input < -1)
+		/* Validate input - allow 0 and positive numbers only */
+		if (input < 0)
 		{
 			printf("Invalid choice. Please select a valid option.\n");
 			continue;
