@@ -10,47 +10,60 @@
 #include "ViewItems.h"
 
 void viewItemDetails(Item* item, ItemList* items) {
-	//display  item details
+	// display item details
+
+	if (item == NULL) {
+		printf("Item not found.\n");
+		viewItems(items);
+		return;
+	}
+
+	printf("\n============= ITEM DETAILS =============\n");
+	printf("ID: %d\n", item->id);
+	printf("Name: %s\n", item->name);
+	printf("Status: %s\n", item->status);
+	printf("========================================\n");
 
 	int selection = 0;
 	promptSingleItemAction(&selection);
-	
+
 	switch (selection) {
-		case 1:
-			promptEditItem(item);
+
+	case 1:
+		// edit item
+		promptEditItem(item);
+		saveToDisk(items);
+		printf("Item updated successfully.\n");
+		viewItemDetails(item, items);
+		break;
+
+	case 2: {
+		int promptDeleteItemSelection = 0;
+		promptDeleteItem(&promptDeleteItemSelection);
+
+		if (promptDeleteItemSelection == 1) {
+			deleteItemById(items, item->id);
 			saveToDisk(items);
-			//display success message
-			viewItemDetails(item, items);
-			break;
-		case 2: {
-			int promptDeleteItemSelection = 0;
-			promptDeleteItem(&promptDeleteItemSelection);
-			if (promptDeleteItemSelection == 1) {
-				deleteItemById(items, promptDeleteItemSelection);
-				//free item memory
-				//show success message
-				//go back to view items
-				viewItems(items);
-			}
-
+			printf("Item deleted successfully.\n");
+			viewItems(items);
 		}
-
-			break;
-		case 3:{
-			promptChangeItemStatus(*item);
-			saveToDisk(items);
-			//prompt success message
-			//show view item details again
+		else {
 			viewItemDetails(item, items);
 		}
+		break;
+	}
 
-			break;
+	case 3:
+		// change status
+		promptChangeItemStatus(*item);
+		saveToDisk(items);
+		printf("Item status updated.\n");
+		viewItemDetails(item, items);
+		break;
 
-		default: {
-			//refresh items view
-			viewItemDetails(item, items);
-		}
-			  break;
-		
+	default:
+		// refresh item details
+		viewItemDetails(item, items);
+		break;
 	}
 }

@@ -8,34 +8,41 @@
 #include "Item.h"
 
 void viewItems(struct ItemList* items) {
-	//clear screen
-	//view list of items
-	int selection = -2;
+	// clear screen
+	printf("\n==================== TODO LIST ====================\n");
 
+	// view list of items
+	printf("0. Back\n");
+	printf("-1. Search\n");
+
+	for (int i = 0; i < items->count; i++) {
+		printf("%d. %s\n",
+			items->items[i].id,
+			items->items[i].name);
+	}
+
+	int selection = -2;
 	promptItemSelection(&selection);
-	
 
 	switch (selection) {
 
-		case 0: {
-			//free items
-			//go back to welcome
-			void welcome(items);
-		}
-			  break;
-		case -1: {
-			char searchTerm[100];
-			promptSearchTerm(searchTerm);
-			ItemList* filteredItems = itemsSearcher(searchTerm);
-			viewFilteredItems(filteredItems, items, searchTerm);
-		}
+	case 0:
+		// free items (if dynamically allocated elsewhere)
+		// go back to welcome
+		welcome(items);
+		break;
 
-			  break;
-		default:
-			//check if item exists
-			viewItemDetails(getItemById(items, selection), items);
-			break;
+	case -1: {
+		char searchTerm[100];
+		promptSearchTerm(searchTerm);
+		ItemList* filteredItems = itemsSearcher(searchTerm);
+		viewFilteredItems(filteredItems, items, searchTerm);
+		break;
 	}
 
-	
+	default:
+		// check if item exists
+		viewItemDetails(getItemById(items, selection), items);
+		break;
+	}
 }
