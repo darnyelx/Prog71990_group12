@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 void promptDeleteItem(int* selection) {
 	int input;
 	while (1) {

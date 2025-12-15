@@ -45,6 +45,7 @@ void viewFilteredItems(ItemList* filteredItems, ItemList* allItems, const char* 
 		/* free filteredItems (logical clear) */
 		filteredItems->count = 0;
 
+<<<<<<< HEAD
 		/* go back to all items view */
 		viewItems(allItems);
 		break;
@@ -59,6 +60,10 @@ void viewFilteredItems(ItemList* filteredItems, ItemList* allItems, const char* 
 			printf("Invalid selection.\n");
 			viewFilteredItems(filteredItems, allItems, searchTerm);
 		}
+=======
+	default:
+		viewItemDetails(getItemById(allItems, selection), allItems);
+>>>>>>> 00795b84ee05d1721dca0646c53bbb50814a58b4
 		break;
 	}
 	}
