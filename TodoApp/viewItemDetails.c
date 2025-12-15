@@ -20,7 +20,7 @@ void viewItemDetails(Item* item, ItemList* items) {
 
 	printf("\n============= ITEM DETAILS =============\n");
 	printf("ID: %d\n", item->id);
-	printf("Name: %s\n", item->name);
+	printf("Name: %s\n", item->title);
 	printf("Status: %s\n", item->status);
 	printf("========================================\n");
 

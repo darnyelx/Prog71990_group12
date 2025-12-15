@@ -10,61 +10,69 @@
 #include "promptSelectAFilteredItem.h"
 
 void viewFilteredItems(ItemList* filteredItems, ItemList* allItems, const char* searchTerm) {
-	// show filtered items based on search term
+    int i;
+    int selection = -2;
 
-	int i;
-	int selection = -2;
+    if (allItems == NULL || allItems->count == 0) {
+        printf("No items available.\n");
+        return;
+    }
 
-	/* clear filtered list */
-	filteredItems->count = 0;
+    /* clear filtered list */
+    filteredItems->count = 0;
 
-	/* filter items */
-	for (i = 0; i < allItems->count; i++) {
-		if (strstr(allItems->items[i].name, searchTerm) != NULL) {
-			filteredItems->items[filteredItems->count] =
-				allItems->items[i];
-			filteredItems->count++;
-		}
-	}
+    /* build filtered list based on search term in title or details */
+    for (i = 0; i < allItems->count; i++) {
+        if (strstr(allItems->data[i].title, searchTerm) != NULL ||
+            strstr(allItems->data[i].details, searchTerm) != NULL) {
+            filteredItems->data[filteredItems->count] = allItems->data[i];
+            filteredItems->count++;
+        }
+    }
 
-	/* display filtered items */
-	printf("\nFiltered Items for \"%s\"\n", searchTerm);
-	printf("0. Back\n");
+    /* display filtered items */
+    printf("\nFiltered Items for \"%s\"\n", searchTerm);
+    printf("0. Back\n");
 
-	for (i = 0; i < filteredItems->count; i++) {
-		printf("%d. %s\n",
-			filteredItems->items[i].id,
-			filteredItems->items[i].name);
-	}
+    if (filteredItems->count == 0) {
+        printf("No matching items found.\n");
+    }
+    else {
+        for (i = 0; i < filteredItems->count; i++) {
+            Item* item = &filteredItems->data[i];
+            printf("\n---------------------------------\n");
+            printf("ID: %d\n", item->id);
+            printf("Title: %s\n", item->title);
+            printf("Content: %s\n", item->details);
+            printf("Status: %s\n", item->status);
+            printf("Created at: %s\n", item->created); 
+            printf("---------------------------------\n");
+        }
+    }
 
-	promptSelectAFilteredItem(&selection);
+    promptSelectAFilteredItem(&selection);
 
-	switch (selection) {
+    switch (selection) {
 
-	case 0:
-		/* free filteredItems (logical clear) */
-		filteredItems->count = 0;
+    case 0:
+        /* clear filteredItems */
+        filteredItems->count = 0;
 
-<<<<<<< HEAD
-		/* go back to all items view */
-		viewItems(allItems);
-		break;
+        /* go back to all items view */
+        viewItems(allItems);
+        break;
 
-	default: {
-		Item* item = getItemById(allItems, selection);
+    default: {
+        Item* item = getItemById(allItems, selection);
 
-		if (item != NULL) {
-			viewItemDetails(item);
-		}
-		else {
-			printf("Invalid selection.\n");
-			viewFilteredItems(filteredItems, allItems, searchTerm);
-		}
-=======
-	default:
-		viewItemDetails(getItemById(allItems, selection), allItems);
->>>>>>> 00795b84ee05d1721dca0646c53bbb50814a58b4
-		break;
-	}
-	}
+        if (item != NULL) {
+            viewItemDetails(item, allItems);
+        }
+        else {
+            printf("Invalid selection.\n");
+            viewFilteredItems(filteredItems, allItems, searchTerm);
+        }
+        break;
+    }
+    }
 }
