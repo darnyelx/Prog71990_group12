@@ -3,6 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include "Item.h"
+#include "getItemById.h"
 
 // Memory management functions
 ItemList* createItemList(size_t initialCapacity) {
@@ -96,24 +97,24 @@ Item createItem(int id, const char* title, const char* details, const char* stat
     item.id = id;
     
     if (title != NULL) {
-        strncpy(item.title, title, MAX_TITLE_LENGTH - 1);
+        strncpy_s(item.title, title, MAX_TITLE_LENGTH - 1);
         item.title[MAX_TITLE_LENGTH - 1] = '\0';
     } else {
         item.title[0] = '\0';
     }
     
     if (details != NULL) {
-        strncpy(item.details, details, MAX_DETAILS_LENGTH - 1);
+        strncpy_s(item.details, details, MAX_DETAILS_LENGTH - 1);
         item.details[MAX_DETAILS_LENGTH - 1] = '\0';
     } else {
         item.details[0] = '\0';
     }
     
     if (status != NULL) {
-        strncpy(item.status, status, MAX_STATUS_LENGTH - 1);
+        strncpy_s(item.status, status, MAX_STATUS_LENGTH - 1);
         item.status[MAX_STATUS_LENGTH - 1] = '\0';
     } else {
-        strcpy(item.status, "Pending");
+        strcpy_s(item.status, "Pending");
     }
     
     getCurrentDateString(item.created, MAX_DATE_LENGTH);
@@ -172,7 +173,7 @@ void getCurrentDateString(char* buffer, size_t size) {
     if (tm_info != NULL) {
         strftime(buffer, size, "%Y-%m-%d %H:%M:%S", tm_info);
     } else {
-        strcpy(buffer, "Unknown");
+        strcpy_s(buffer, "Unknown");
     }
 }
 
