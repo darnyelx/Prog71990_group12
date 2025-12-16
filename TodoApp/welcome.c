@@ -5,9 +5,11 @@
 #include "Item.h"
 #include "promptCreateItem.h"
 
+
 /*
  * Controls the main application flow based on the user's menu selection.
  *
+
  * Parameters:
  *   items - pointer to the ItemList containing all Todo items
  *
@@ -19,7 +21,8 @@
  * Author: Ifeanyi Chiemeke
  */
 void welcome(ItemList* items)
-{
+{	
+	clearScreen();
 	int selection = 0;
 
 	/* Display main menu and get user selection */
@@ -36,8 +39,13 @@ void welcome(ItemList* items)
 			break;
 
 		case 0:
+			//free items;
+			if (items) {
+				free(items->data);
+				free(items);
+			}
 			printf("Exiting application. Goodbye!\n");
-			exit(1);
+			exit(0);
 			break;
 
 		default:

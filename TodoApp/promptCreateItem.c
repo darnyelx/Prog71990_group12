@@ -52,7 +52,7 @@ void promptCreateItem(ItemList* items)
     char title[MAX_TITLE_LENGTH];
     printf("Enter title: ");
     fflush(stdout);
-
+	while (getchar() != '\n');  // clear input buffer
     if (fgets(title, MAX_TITLE_LENGTH, stdin) != NULL) {
         title[strcspn(title, "\r\n")] = '\0';  // trim newline
     } else {

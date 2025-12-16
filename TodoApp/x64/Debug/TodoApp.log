@@ -1,2 +1,6 @@
-﻿  promptEditItem.c
+﻿  welcome.c
+C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\welcome.c(34,14): warning C4133: 'function': incompatible types - from 'ItemList *' to 'ItemList *'
+C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\welcome.c(38,21): warning C4133: 'function': incompatible types - from 'ItemList *' to 'ItemList *'
+C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\welcome.c(43,4): warning C4013: 'free' undefined; assuming extern returning int
+C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\welcome.c(46,4): warning C4013: 'exit' undefined; assuming extern returning int
   TodoApp.vcxproj -> C:\Users\Darnyelx\source\repos\TodoApp\x64\Debug\TodoApp.exe

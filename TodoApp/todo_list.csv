@@ -1,5 +1,5 @@
 id,title,details,created,status
-1,"Buy groceries","Milk, eggs, bread","2025-02-01 09:15:00","Pending"
+1,"Buy groceries","Milk, eggs, bread","2025-02-01 09:15:00","Completed"
 2,"Study C programming","Pointers, structs, and memory management","2025-02-02 14:30:00","In Progress"
 3,"Finish assignment","Complete TODO app documentation","2025-02-03 18:45:00","Completed"
 4,"Workout","30 minutes cardio and stretching","2025-02-04 07:00:00","Pending"
@@ -8,4 +8,4 @@ id,title,details,created,status
 7,"Read documentation","Review C standard library functions","2025-02-07 20:10:00","In Progress"
 8,"Fix bugs","Resolve CSV parsing issues","2025-02-08 13:40:00","Pending"
 9,"Backup project","Create backup of source files","2025-02-09 10:00:00","Completed"
-10,"Prepare presentation","Slides for project demo","2025-02-10 15:30:00","Pending"
+10,"Prepare presentations","Slides for project demo","2025-02-10 15:30:00","Completed"
