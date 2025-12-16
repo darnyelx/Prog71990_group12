@@ -19,6 +19,7 @@
     *
     * Returns:
     *   Pointer to a newly allocated ItemList, or NULL on failure.
+    *  Author: Junior Felix
     */
 ItemList* createItemList(size_t initialCapacity)
 {
@@ -44,6 +45,7 @@ ItemList* createItemList(size_t initialCapacity)
 
 /*
  * Frees all memory associated with an ItemList.
+ *  Author: Junior Felix
  */
 void freeItemList(ItemList* list)
 {
@@ -56,6 +58,7 @@ void freeItemList(ItemList* list)
 /*
  * Ensures the list has at least the specified capacity.
  * Automatically resizes the list if required.
+ *  Author: Junior Felix
  */
 int ensureCapacity(ItemList* list, size_t minCapacity)
 {
@@ -84,6 +87,7 @@ int ensureCapacity(ItemList* list, size_t minCapacity)
 
 /*
  * Adds a new item to the list.
+ *  Author: Junior Felix
  */
 int addItem(ItemList* list, const Item* item)
 {
@@ -101,7 +105,8 @@ int addItem(ItemList* list, const Item* item)
 
 /*
  * Removes an item at a specific index by shifting remaining items.
- */
+ *  Author: Junior Felix
+*/
 void removeItemAt(ItemList* list, size_t index)
 {
     if (list == NULL || index >= list->count) {
@@ -122,7 +127,9 @@ void removeItemAt(ItemList* list, size_t index)
    /*
     * Creates a new Item with the provided values.
     * Automatically sets the creation date.
+    *  Author: Junior Felix
     */
+
 Item createItem(int id, const char* title, const char* details, const char* status)
 {
     Item item;
@@ -158,7 +165,8 @@ Item createItem(int id, const char* title, const char* details, const char* stat
 
 /*
  * Updates an existing item identified by ID.
- */
+ *  Author: Junior Felix
+*/
 int updateItem(ItemList* list, int id, const Item* updatedItem)
 {
     Item* item = getItemById(list, id);
@@ -172,7 +180,8 @@ int updateItem(ItemList* list, int id, const Item* updatedItem)
 
 /*
  * Deletes an item from the list by ID.
- */
+ *  Author: Junior Felix
+*/
 int deleteItem(ItemList* list, int id)
 {
     if (list == NULL) {
@@ -195,6 +204,7 @@ int deleteItem(ItemList* list, int id)
 
    /*
     * Writes the current date and time into the provided buffer.
+    *  Author: Junior Felix
     */
 void getCurrentDateString(char* buffer, size_t size)
 {
@@ -215,7 +225,8 @@ void getCurrentDateString(char* buffer, size_t size)
 
 /*
  * Validates required fields of an Item.
- */
+ *  Author: Junior Felix
+*/
 int validateItem(const Item* item)
 {
     if (item == NULL) {
@@ -239,6 +250,7 @@ int validateItem(const Item* item)
 
 /*
  * Clears the terminal screen.
+ *  Author: Ifeanyi Chiemeke
  */
 void clearScreen(void)
 {

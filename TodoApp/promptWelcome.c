@@ -6,7 +6,12 @@
  * Parameters:
  *   selection - pointer to an integer where the user's choice is stored
  *
- * The function validates input and keeps prompting until a valid option is entered.
+ * Behavior:
+ *   - Displays the main application menu
+ *   - Prompts the user to select an option
+ *   - Repeats until valid numeric input is entered
+ *
+ * Author: Kadeema Wakha
  */
 void promptWelcome(int* selection)
 {
@@ -14,21 +19,21 @@ void promptWelcome(int* selection)
 
     while (1)
     {
+        // Display main menu
         printf("\n=================================\n");
-        printf("        TODO APPLICATION\n");
+        printf("         TODO APPLICATION        \n");
         printf("=================================\n");
-        printf("1. View all items\n");
-        printf("2. Create a new item\n");
-        printf("0. Exit\n");
+        printf("1) View all Todos\n");
+        printf("2) Create a new Todo\n");
+        printf("0) Exit\n");
         printf("---------------------------------\n");
         printf("Enter your choice: ");
 
         /* Read user input */
-
         if (scanf_s("%d", &input) != 1)
         {
             /* Clear invalid input */
-            while (getchar() != '\n');
+            while (getchar() != '\n') { }
             printf("Invalid input. Please enter a number.\n");
             continue;
         }
@@ -40,6 +45,7 @@ void promptWelcome(int* selection)
             continue;
         }
 
+        // Store valid selection and exit loop
         *selection = input;
         break;
     }

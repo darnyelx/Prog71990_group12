@@ -16,7 +16,7 @@
  *   - The returned pointer refers to the item inside the list.
  *   - The caller must NOT free the returned pointer.
  *
- * Author: ""
+ * Author: "Chiemeke Ifeanyi"
  */
 Item* getItemById(ItemList* items, int id)
 {

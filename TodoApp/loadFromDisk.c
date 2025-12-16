@@ -11,7 +11,7 @@
  * Splits one CSV line into CSV_COLS fields.
  * Supports commas inside quotes. Quotes are ignored (not stored).
  * Returns an allocated array of strings; caller must free each field and the array.
- * Author: "Ifeanyi Chiemeke"
+ * Author: Ifeanyi Chiemeke
  */
 char** parseCsvLine(const char* line)
 {

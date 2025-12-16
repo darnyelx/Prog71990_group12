@@ -8,7 +8,6 @@
 #include "welcome.h"
 
 int main() {
-	setvbuf(stdout, NULL, _IONBF, 0);
 
 	ItemList* items = loadFromDisk();
 	if (items == NULL)

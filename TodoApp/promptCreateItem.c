@@ -5,52 +5,74 @@
 #include "saveToDisk.h"
 #include "welcome.h"
 
+/*
+ * Clears any remaining characters from the input buffer.
+ * This is used after scanf/scanf_s to remove leftover newline characters.
+ */
 static void clearInputBuffer(void)
 {
     int c;
-    while ((c = getchar()) != '\n' && c != EOF) {}
+    while ((c = getchar()) != '\n' && c != EOF) { }
 }
 
+/*
+ * Prompts the user to create a new Todo item and adds it to the list.
+ *
+ * Parameters:
+ *   items - pointer to the ItemList where the new item will be stored
+ *
+ * Behavior:
+ *   - Collects title and details using fgets (supports spaces)
+ *   - Lets the user choose a status using a numeric menu
+ *   - Generates a new ID, creates the item, validates it, and adds it to the list
+ *   - Saves the updated list to disk, then returns to the main menu
+ *
+ * Notes:
+ *   - Uses fgets for text input to avoid input-buffer issues
+ *   - Uses scanf_s only for numeric status selection (then clears buffer)
+ *
+ * Author: Junior Felix
+ */
 void promptCreateItem(ItemList* items)
 {
     clearScreen();
+
+    // Validate list pointer
     if (items == NULL) {
         printf("Error: Todo list is not initialized.\n");
         return;
     }
 
+    // Screen title
     printf("\n=================================\n");
-    printf("        CREATE NEW Todo\n");
+    printf("          CREATE NEW TODO        \n");
     printf("=================================\n");
 
-    // Clear input buffer (only needed if previous input used scanf/scanf_s)
-    clearInputBuffer();
-
-    // Get title
+    // Get title (use fgets to allow spaces)
     char title[MAX_TITLE_LENGTH];
     printf("Enter title: ");
     fflush(stdout);
+
     if (fgets(title, MAX_TITLE_LENGTH, stdin) != NULL) {
-        title[strcspn(title, "\r\n")] = '\0';
-    }
-    else {
+        title[strcspn(title, "\r\n")] = '\0';  // trim newline
+    } else {
         printf("Error reading title.\n");
         return;
     }
 
-    // Get details
+    // Get details (use fgets to allow spaces)
     char details[MAX_DETAILS_LENGTH];
     printf("Enter details: ");
     fflush(stdout);
+
     if (fgets(details, MAX_DETAILS_LENGTH, stdin) != NULL) {
-        details[strcspn(details, "\r\n")] = '\0';
-    }
-    else {
+        details[strcspn(details, "\r\n")] = '\0';  // trim newline
+    } else {
         printf("Error reading details.\n");
         return;
     }
 
-    // Status selection (numbers)
+    // Status selection (numeric input)
     int statusChoice = -1;
     char status[MAX_STATUS_LENGTH];
 
@@ -59,6 +81,7 @@ void promptCreateItem(ItemList* items)
     printf("2) In Progress\n");
     printf("3) Completed\n");
 
+    // Loop until a valid menu option is entered
     while (1) {
         printf("Your choice (1-3): ");
         fflush(stdout);
@@ -69,6 +92,7 @@ void promptCreateItem(ItemList* items)
             continue;
         }
 
+        // Remove leftover newline after scanf_s
         clearInputBuffer();
 
         if (statusChoice < 1 || statusChoice > 3) {
@@ -79,32 +103,33 @@ void promptCreateItem(ItemList* items)
         break;
     }
 
+    // Convert the numeric choice into a status string
     switch (statusChoice) {
-    case 1: strcpy_s(status, MAX_STATUS_LENGTH, "Pending"); break;
-    case 2: strcpy_s(status, MAX_STATUS_LENGTH, "In Progress"); break;
-    case 3: strcpy_s(status, MAX_STATUS_LENGTH, "Completed"); break;
-    default: strcpy_s(status, MAX_STATUS_LENGTH, "Pending"); break; // safety
+        case 1: strcpy_s(status, MAX_STATUS_LENGTH, "Pending"); break;
+        case 2: strcpy_s(status, MAX_STATUS_LENGTH, "In Progress"); break;
+        case 3: strcpy_s(status, MAX_STATUS_LENGTH, "Completed"); break;
+        default: strcpy_s(status, MAX_STATUS_LENGTH, "Pending"); break;
     }
 
-    // Generate new ID (simple approach - use current count + 1)
+    // Generate new ID (simple approach: count + 1)
     int newId = (int)(items->count + 1);
 
-    // Create the item
+    // Build the item using your factory function
     Item newItem = createItem(newId, title, details, status);
 
-    // Validate the item
+    // Validate required fields before adding
     if (!validateItem(&newItem)) {
         printf("Error: Invalid item data.\n");
         return;
     }
 
-    // Add to list
+    // Add new item to the list
     if (!addItem(items, &newItem)) {
         printf("Error: Failed to add item to list.\n");
         return;
     }
 
-    // Save immediately
+    // Persist changes
     saveToDisk(items);
 
     printf("\nItem created successfully with ID: %d\n", newId);

@@ -21,7 +21,8 @@
  *   - The caller is responsible for freeing the returned list.
  *   - Matching is case-sensitive.
  *
- * Author: ""
+ * Author: Junior Felix
+
  */
 ItemList* itemsSearcher(ItemList* items, char* term)
 {
