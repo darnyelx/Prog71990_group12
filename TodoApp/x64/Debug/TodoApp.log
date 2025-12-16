@@ -1,6 +1,44 @@
-﻿  welcome.c
-C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\welcome.c(34,14): warning C4133: 'function': incompatible types - from 'ItemList *' to 'ItemList *'
-C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\welcome.c(38,21): warning C4133: 'function': incompatible types - from 'ItemList *' to 'ItemList *'
-C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\welcome.c(43,4): warning C4013: 'free' undefined; assuming extern returning int
-C:\Users\Darnyelx\source\repos\TodoApp\TodoApp\welcome.c(46,4): warning C4013: 'exit' undefined; assuming extern returning int
-  TodoApp.vcxproj -> C:\Users\Darnyelx\source\repos\TodoApp\x64\Debug\TodoApp.exe
+﻿  deleteItem.c
+  getItemById.c
+  Item.c
+  itemsSearcher.c
+  loadFromDisk.c
+  main.c
+  promptChangeItemStatus.c
+  promptCreateItem.c
+  promptDeleteItem.c
+  promptEditItem.c
+  promptItemSelection.c
+  promptSearchTerm.c
+  promptSelectAFilteredItem.c
+  promptSingleItemAction.c
+  promptWelcome.c
+  saveToDisk.c
+  viewFilteredItems.c
+  viewItemDetails.c
+  viewItems.c
+  viewSearcher.c
+  Generating Code...
+C:\Users\Kade\source\repos\Prog71990_group12\TodoApp\itemsSearcher.c(6,9): warning C4005: 'INITIAL_CAPACITY': macro redefinition
+      C:\Users\Kade\source\repos\Prog71990_group12\TodoApp\Item.h(7,9):
+      see previous definition of 'INITIAL_CAPACITY'
+  
+C:\Users\Kade\source\repos\Prog71990_group12\TodoApp\main.c(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Kade\source\repos\Prog71990_group12\TodoApp\main.c(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Kade\source\repos\Prog71990_group12\TodoApp\main.c(16,3): warning C4013: 'exit' undefined; assuming extern returning int
+C:\Users\Kade\source\repos\Prog71990_group12\TodoApp\viewFilteredItems.c(89,23): warning C4133: 'function': incompatible types - from 'ItemList *' to 'ItemList *'
+C:\Users\Kade\source\repos\Prog71990_group12\TodoApp\viewItemDetails.c(18,19): warning C4133: 'function': incompatible types - from 'ItemList *' to 'ItemList *'
+C:\Users\Kade\source\repos\Prog71990_group12\TodoApp\viewItemDetails.c(55,27): warning C4133: 'function': incompatible types - from 'ItemList *' to 'ItemList *'
+C:\Users\Kade\source\repos\Prog71990_group12\TodoApp\viewItemDetails.c(73,23): warning C4133: 'function': incompatible types - from 'ItemList *' to 'ItemList *'
+C:\Users\Kade\source\repos\Prog71990_group12\TodoApp\viewItems.c(29,26): warning C4028: formal parameter 1 different from declaration
+C:\Users\Kade\source\repos\Prog71990_group12\TodoApp\viewItems.c(87,9): warning C4013: 'exit' undefined; assuming extern returning int
+C:\Users\Kade\source\repos\Prog71990_group12\TodoApp\viewSearcher.c(36,13): warning C4133: 'function': incompatible types - from 'ItemList *' to 'ItemList *'
+C:\Users\Kade\source\repos\Prog71990_group12\TodoApp\viewSearcher.c(49,13): warning C4133: 'function': incompatible types - from 'ItemList *' to 'ItemList *'
+  Compiling...
+  welcome.c
+C:\Users\Kade\source\repos\Prog71990_group12\TodoApp\welcome.c(34,14): warning C4133: 'function': incompatible types - from 'ItemList *' to 'ItemList *'
+C:\Users\Kade\source\repos\Prog71990_group12\TodoApp\welcome.c(38,21): warning C4133: 'function': incompatible types - from 'ItemList *' to 'ItemList *'
+C:\Users\Kade\source\repos\Prog71990_group12\TodoApp\welcome.c(44,5): warning C4013: 'free' undefined; assuming extern returning int
+C:\Users\Kade\source\repos\Prog71990_group12\TodoApp\welcome.c(48,4): warning C4013: 'exit' undefined; assuming extern returning int
+  Generating Code...
+  TodoApp.vcxproj -> C:\Users\Kade\source\repos\Prog71990_group12\x64\Debug\TodoApp.exe
